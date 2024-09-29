@@ -16,8 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PreProcessing {
-
-
     public float[][][] chunk(float[][][] incoming, int n_chunk) {
         int inputLength = incoming[0].length;
         int chunkLength = inputLength / n_chunk;
@@ -36,8 +34,6 @@ public class PreProcessing {
         // Convert the list back to a 3D array
         return outputs.toArray(new float[outputs.size()][][]);
     }
-
-
     public float[][][] audioRead(String filePath, Context context) throws Exception {
         JLibrosa jLibrosa = new JLibrosa();
         String path = copyAssetToFiles(filePath,context);
@@ -90,7 +86,7 @@ public class PreProcessing {
 
         try (InputStream inputStream = assetManager.open(fileName);
              OutputStream outputStream = new FileOutputStream(destinationFile)) {
-            byte[] buffer = new byte[1024];
+            byte[] buffer = new byte[512];
             int length;
             while ((length = inputStream.read(buffer)) > 0) {
                 outputStream.write(buffer, 0, length);
